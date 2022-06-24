@@ -2,12 +2,14 @@ const express = require('express')
 const app = express()
 const mongo = require('mongodb').MongoClient
 const port = process.env.PORT || 5000
+const cors = require('cors')
 require('dotenv').config()
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(cors())
 
 let dbConnectStr = process.env.DB_STRING
 
